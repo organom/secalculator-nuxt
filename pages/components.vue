@@ -9,18 +9,20 @@
            class="button--green">Index</a>
       </div>
     </div>
+    <template v-if="loading">
+      <spinner></spinner> <!-- here use a loaded you prefer -->
+    </template>
     <section class="container">
       <div>
         <vue-good-table
           :columns="columns"
           :rows="rows"
-          :search-options="{ enabled: true }">
-          :pagination-options="{
-          enabled: true,
-          mode: 'records'
-          }"
+          :search-options="{ enabled: true }"
           styleClass="vgt-table striped"
           >
+          <div slot="emptystate">
+            Loading data, please wait!
+          </div>
         </vue-good-table>
       </div>
     </section>
@@ -36,32 +38,50 @@ export default {
   name: 'index',
   data(){
     return {
+      loading: false,
       columns: [
         {
-          label: 'Name',
-          field: 'name',
+          label: 'CubeSize',
+          field: 'CubeSize',
         },
         {
-          label: 'Age',
-          field: 'age',
-          type: 'number',
+          label: 'BlockTopology',
+          field: 'BlockTopology',
         },
         {
-          label: 'Created On',
-          field: 'createdAt',
-          type: 'date',
-          dateInputFormat: 'yyyy-MM-dd',
-          dateOutputFormat: 'MMM do yy',
+          label: 'DisplayName',
+          field: 'DisplayName',
         },
         {
-          label: 'Percent',
-          field: 'score',
-          type: 'percentage',
+          label: 'Description',
+          field: 'Description',
+        },
+        {
+          label: 'RequiredPowerInput',
+          field: 'RequiredPowerInput',
+          type: 'number'
         },
       ],
-      rows: baseBlocks(),
+      rows: [],
     };
   },
+  created() {
+    this.getBaseBlocks()
+  },
+  methods: {
+    getBaseBlocks() {
+      this.loading = true
+      baseBlocks()
+        .then(response => {
+          this.loading = false
+          this.rows = response;
+        })
+        .catch(error => {
+          this.loading = false
+          console.log(error)
+        })
+    }
+  }
 }
 </script>
 

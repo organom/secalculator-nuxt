@@ -17,7 +17,6 @@ const loadBaseBlocks = async function() {
         });
         blocks.push(jsonObj.Definitions);
     }
-    console.log('was here!!');
-    return blocks.Definitions;
+    return blocks.map(x => x.CubeBlocks.Definition).flat();
 };
 module.exports = loadBaseBlocks;
