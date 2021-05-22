@@ -13,6 +13,9 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  plugins: [
+    { src: '~/plugins/vue-good-table', ssr: false }
+  ],
   router: { base: '/secalculator/' },
   /*
   ** Customize the progress bar color

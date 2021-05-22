@@ -2,6 +2,8 @@
 
 > Space Engineers calculator
 
+https://organom.github.io/secalculator/
+
 ## Build Setup
 
 ``` bash

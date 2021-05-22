@@ -1,7 +1,6 @@
 <template>
   <section class="container">
     <div>
-      <app-logo/>
       <h1 class="title">
         secalculator
       </h1>
@@ -10,9 +9,8 @@
       </h2>
       <div class="links">
         <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
+          href="/secalculator/components"
+          class="button--green">Components</a>
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
@@ -23,12 +21,10 @@
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
-
 export default {
   components: {
-    AppLogo
-  }
+  },
+  name: 'index',
 }
 </script>
 
