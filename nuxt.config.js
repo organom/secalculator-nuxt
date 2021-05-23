@@ -16,6 +16,11 @@ module.exports = {
   plugins: [
     { src: '~/plugins/vue-good-table', ssr: false }
   ],
+  render: {
+    bundleRenderer: {
+      runInNewContext: false,
+    },
+  },
   router: { base: '/secalculator/' },
   /*
   ** Customize the progress bar color

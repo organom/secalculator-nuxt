@@ -12,20 +12,18 @@
     <template v-if="loading">
       <spinner></spinner> <!-- here use a loaded you prefer -->
     </template>
-    <section class="container">
-      <div>
-        <vue-good-table
-          :columns="columns"
-          :rows="rows"
-          :search-options="{ enabled: true }"
-          styleClass="vgt-table striped"
-          >
-          <div slot="emptystate">
-            Loading data, please wait!
-          </div>
-        </vue-good-table>
-      </div>
-    </section>
+    <div>
+      <vue-good-table
+        :columns="columns"
+        :rows="rows"
+        :search-options="{ enabled: true }"
+        styleClass="vgt-table striped"
+        >
+        <div slot="emptystate">
+          Loading data, please wait!
+        </div>
+      </vue-good-table>
+    </div>
   </div>
 </template>
 
