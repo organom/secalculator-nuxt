@@ -10,12 +10,13 @@
       </div>
     </div>
     <template v-if="loading">
-      <spinner></spinner> <!-- here use a loaded you prefer -->
+      <div>LOADDDDDDIIINGNGGG!!!</div> <!-- here use a loaded you prefer -->
     </template>
     <div>
       <vue-good-table
         :columns="columns"
         :rows="rows"
+        :totalRows="totalRecords"
         :search-options="{ enabled: true }"
         styleClass="vgt-table striped"
         >
@@ -23,6 +24,7 @@
           Loading data, please wait!
         </div>
       </vue-good-table>
+      <div>Total Records {{ this.totalRecords }}</div>
     </div>
   </div>
 </template>
@@ -31,12 +33,9 @@
 const baseBlocks = require('/assets/load_base.js');
 
 export default {
-  components: {
-  },
   name: 'index',
-  data(){
+  data() {
     return {
-      loading: false,
       columns: [
         {
           label: 'CubeSize',
@@ -57,28 +56,22 @@ export default {
         {
           label: 'RequiredPowerInput',
           field: 'RequiredPowerInput',
-          type: 'number'
         },
       ],
+      loading: true,
       rows: [],
-    };
+      totalRecords: 0,
+    }
   },
   created() {
-    this.getBaseBlocks()
+    baseBlocks().then(response => {
+      this.rows = response;
+      this.totalRecords = response.length;
+      console.log(this.totalRecords);
+      this.loading = false;
+    }).catch(console.error);
   },
   methods: {
-    getBaseBlocks() {
-      this.loading = true
-      baseBlocks()
-        .then(response => {
-          this.loading = false
-          this.rows = response;
-        })
-        .catch(error => {
-          this.loading = false
-          console.log(error)
-        })
-    }
   }
 }
 </script>

@@ -29,6 +29,13 @@ module.exports = {
   /*
   ** Build configuration
   */
+  target: 'static',
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true
+    }
+  },
   build: {
     /*
     ** Run ESLint on save

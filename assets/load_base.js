@@ -10,13 +10,15 @@ const loadBaseBlocks = async function() {
     for (let i = 0; i < files.length; i++){
         const response = await fetch(`https://organom.github.io/secalculator/CubeBlocks/${files[i]}.sbc`,{mode: 'no-cors'})
         const xml = await response.text();
-        const jsonObj = fastParser.parse(xml, {
+        const jsonObj = await fastParser.parse(xml, {
             attributeNamePrefix: "@_",
             ignoreAttributes: false,
             ignoreNameSpace: false
         });
-        blocks.push(jsonObj.Definitions);
+        if(jsonObj.Definitions) {
+          blocks.push(jsonObj.Definitions.CubeBlocks.Definition);
+        }
     }
-    return blocks.map(x => x.CubeBlocks.Definition).flat();
+    return blocks.flat();
 };
 module.exports = loadBaseBlocks;
