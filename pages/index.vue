@@ -12,7 +12,7 @@
           href="/secalculator/components"
           class="button--green">Components</a>
         <a
-          href="https://github.com/nuxt/nuxt.js"
+          href="https://github.com/organom/secalculator"
           target="_blank"
           class="button--grey">GitHub</a>
       </div>
