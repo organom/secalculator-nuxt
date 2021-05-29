@@ -13,11 +13,12 @@ jobs:
           node-version: '14'
       - name: Build
         run: |
-          npm install
-          npm run lint
-          npm run build
-          npm run generate
+          npm install -g yarn
+          yarn install
+          yarn lint
+          yarn build
+          yarn generate
       - name: Deploy
         run: |
-          npm run deploy
+          yarn deploy
 
