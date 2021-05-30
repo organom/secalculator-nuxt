@@ -3,13 +3,16 @@ export const state = () => ({
 })
 
 export const mutations = {
-  add(state, comp) {
+  setBlocks(state, blocks) {
+    state.blocks = blocks;
+  },
+  addBlocks(state, comp) {
     state.blocks.push(comp)
   },
-  remove(state, { comp }) {
+  removeBlocks(state, { comp }) {
     state.blocks.splice(state.blocks.indexOf(comp), 1)
   },
-  clean(state) {
+  cleanBlocks(state) {
     state.blocks = [];
   },
 }

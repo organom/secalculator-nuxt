@@ -30,7 +30,7 @@ export default {
   async mounted() {
     if(this.$store.state.base.blocks.length === 0) {
       const blocks = await (require('/assets/load_base.js'))();
-      this.$store.commit('base/add', ...blocks);
+      this.$store.commit('base/setBlocks', blocks);
     }
   },
   computed: {

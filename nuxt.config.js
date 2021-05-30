@@ -36,6 +36,7 @@ module.exports = {
       devtools: true
     }
   },
+  modules: ['@nuxt/http'],
   build: {
     /*
     ** Run ESLint on save

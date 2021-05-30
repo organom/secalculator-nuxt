@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "fast-xml-parser": "^3.19.0",
+    "@nuxt/http": "^0.5.1",
     "nuxt": "^2.0.0",
     "push-dir": "^0.4.1",
     "vue-good-table": "^2.21.10"
