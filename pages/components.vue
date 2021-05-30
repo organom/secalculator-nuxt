@@ -8,11 +8,7 @@
         <button class="button--grey" @click="goBack">Back</button>
       </div>
     </div>
-    <p v-if="$fetchState.pending">
-      <span class="loading">LOADING!</span>
-    </p>
-    <p v-else-if="$fetchState.error">Error while fetching base blocks 🤬</p>
-    <div v-else>
+    <div>
       <div>Total Records {{ this.baseBlocks.length }}</div>
       <vue-good-table
         :columns="columns"
@@ -31,9 +27,10 @@
 <script>
 export default {
   name: 'components',
-  async fetch() {
+  async mounted() {
     if(this.$store.state.base.blocks.length === 0) {
-      this.$store.commit('base/add', ...(await (require('/assets/load_base.js'))()));
+      const blocks = await (require('/assets/load_base.js'))();
+      this.$store.commit('base/add', ...blocks);
     }
   },
   computed: {

@@ -21,9 +21,10 @@
 <script>
 export default {
   name: 'index',
-  async fetch() {
-    if(this.$store.state.base.blocks.length === 0) {
-      this.$store.commit('base/add', ...(await (require('/assets/load_base.js'))()));
+  async mounted() {
+     if(this.$store.state.base.blocks.length === 0) {
+       const blocks = await (require('/assets/load_base.js'))();
+       this.$store.commit('base/add', ...blocks);
     }
   },
   computed: {
