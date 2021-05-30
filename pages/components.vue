@@ -14,10 +14,23 @@
         :columns="columns"
         :rows="baseBlocks"
         :search-options="{ enabled: true }"
+        :pagination-options="{
+          enabled: true,
+          perPage: 40,
+          perPageDropdown: [10, 20, 40, 80, 120, 160, 200],
+        }"
         styleClass="vgt-table striped"
         >
+        <!--template slot="table-column" slot-scope="props">
+           <span v-if="props.column.label === 'Components'">
+              <i class="fa fa-address-book">{{props.column.label}}</i>
+           </span>
+           <span v-else>
+              {{props.column.label}}
+           </span>
+        </template-->
         <div slot="emptystate">
-          Loading data, please wait!
+          No data... please reload root of the website in order to have data!
         </div>
       </vue-good-table>
     </div>
@@ -27,12 +40,6 @@
 <script>
 export default {
   name: 'components',
-  async mounted() {
-    if(this.$store.state.base.blocks.length === 0) {
-      const blocks = await (require('/assets/load_base.js'))();
-      this.$store.commit('base/setBlocks', blocks);
-    }
-  },
   computed: {
     baseBlocks () {
       return this.$store.state.base.blocks;
@@ -47,20 +54,32 @@ export default {
     return {
       columns: [
         {
-          label: 'CubeSize',
-          field: 'CubeSize',
-        },
-        {
-          label: 'BlockTopology',
-          field: 'BlockTopology',
-        },
-        {
           label: 'DisplayName',
           field: 'DisplayName',
         },
         {
+          label: 'CubeSize',
+          field: 'CubeSize',
+        },
+        {
+          label: 'Type',
+          field: 'Id.TypeId',
+        },
+        {
+          label: 'Subtype',
+          field: 'Id.SubtypeId',
+        },
+        {
           label: 'Description',
           field: 'Description',
+        },
+        {
+          label: 'PCU',
+          field: 'PCU',
+        },
+        {
+          label: 'BuildTimeSeconds',
+          field: 'BuildTimeSeconds',
         },
         {
           label: 'RequiredPowerInput',
@@ -68,7 +87,7 @@ export default {
         },
         {
           label: 'Components',
-          field: 'RequiredPowerInput',
+          field: 'Components',
         },
       ],
       rows: [],
