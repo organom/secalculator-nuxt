@@ -8,23 +8,37 @@
         Space Engineers calculator
       </h2>
       <div class="links">
-        <a
-          href="/secalculator/components"
-          class="button--green">Components</a>
-        <a
-          href="https://github.com/organom/secalculator"
-          target="_blank"
-          class="button--grey">GitHub</a>
+        <button class="button--grey" @click="goToComponents">Components</button>
+        <button class="button--grey" @click="goToGitHub">GitHub</button>
       </div>
+
+      <div>Total Records {{ this.baseBlocks.length }}</div>
+      <div>{{ JSON.stringify(this.baseBlocks) }}</div>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  components: {
-  },
   name: 'index',
+  async fetch() {
+    if(this.$store.state.base.blocks.length === 0) {
+      this.$store.commit('base/add', ...(await (require('/assets/load_base.js'))()));
+    }
+  },
+  computed: {
+    baseBlocks () {
+      return this.$store.state.base.blocks;
+    }
+  },
+  methods: {
+    goToComponents() {
+      return this.$router.push('/components')
+    },
+    goToGitHub() {
+      return window.location = 'https://github.com/organom/secalculator';
+    }
+  },
 }
 </script>
 

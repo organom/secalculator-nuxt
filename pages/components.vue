@@ -5,18 +5,18 @@
         secalculator
       </h1>
       <div class="links">
-        <a href="/secalculator/"
-           class="button--green">Index</a>
+        <button class="button--grey" @click="goBack">Back</button>
       </div>
     </div>
-    <template v-if="loading">
-      <div>LOADDDDDDIIINGNGGG!!!</div> <!-- here use a loaded you prefer -->
-    </template>
-    <div>
+    <p v-if="$fetchState.pending">
+      <span class="loading">LOADING!</span>
+    </p>
+    <p v-else-if="$fetchState.error">Error while fetching base blocks 🤬</p>
+    <div v-else>
+      <div>Total Records {{ this.baseBlocks.length }}</div>
       <vue-good-table
         :columns="columns"
-        :rows="rows"
-        :totalRows="totalRecords"
+        :rows="baseBlocks"
         :search-options="{ enabled: true }"
         styleClass="vgt-table striped"
         >
@@ -24,16 +24,28 @@
           Loading data, please wait!
         </div>
       </vue-good-table>
-      <div>Total Records {{ this.totalRecords }}</div>
     </div>
   </div>
 </template>
 
 <script>
-const baseBlocks = require('/assets/load_base.js');
-
 export default {
-  name: 'index',
+  name: 'components',
+  async fetch() {
+    if(this.$store.state.base.blocks.length === 0) {
+      this.$store.commit('base/add', ...(await (require('/assets/load_base.js'))()));
+    }
+  },
+  computed: {
+    baseBlocks () {
+      return this.$store.state.base.blocks;
+    }
+  },
+  methods: {
+    goBack() {
+      return this.$router.go(-1)
+    }
+  },
   data() {
     return {
       columns: [
@@ -57,22 +69,15 @@ export default {
           label: 'RequiredPowerInput',
           field: 'RequiredPowerInput',
         },
+        {
+          label: 'Components',
+          field: 'RequiredPowerInput',
+        },
       ],
-      loading: true,
       rows: [],
       totalRecords: 0,
     }
   },
-  created() {
-    baseBlocks().then(response => {
-      this.rows = response;
-      this.totalRecords = response.length;
-      console.log(this.totalRecords);
-      this.loading = false;
-    }).catch(console.error);
-  },
-  methods: {
-  }
 }
 </script>
 
