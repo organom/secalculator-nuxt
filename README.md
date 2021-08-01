@@ -1,8 +1,6 @@
 # secalculator
 
-> Space Engineers calculator
-
-https://organom.github.io/secalculator/
+Space Engineers calculator  https://organom.github.io/secalculator/
 
 ## Build Setup
 
