@@ -13,6 +13,7 @@
       </div>
 
       <div>Total Blocks loaded: {{ this.baseBlocks.length }}</div>
+      <div>Total Components loaded: {{ [...new Set(this.baseBlocks.map(x => x.Components.map(t => t["@_Subtype"])))].length}}</div>
     </div>
   </section>
 </template>
@@ -36,7 +37,7 @@ export default {
   },
   methods: {
     goToBlocks() {
-      return this.$router.push('/components')
+      return this.$router.push('/blocks')
     },
     goToGitHub() {
       return window.location = 'https://github.com/organom/secalculator';

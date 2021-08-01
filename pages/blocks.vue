@@ -9,7 +9,7 @@
       </div>
     </div>
     <div>
-      <div>Total Records {{ this.baseBlocks.length }}</div>
+      <div>Total Blocks loaded: {{ this.baseBlocks.length }}</div>
       <vue-good-table
         :columns="columns"
         :rows="baseBlocks"
@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  name: 'components',
+  name: 'blocks',
   computed: {
     baseBlocks () {
       return this.$store.state.base.blocks;
