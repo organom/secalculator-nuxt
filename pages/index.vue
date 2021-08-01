@@ -8,12 +8,11 @@
         Space Engineers calculator
       </h2>
       <div class="links">
-        <button class="button--grey" @click="goToComponents">Components</button>
+        <button class="button--grey" @click="goToBlocks">Blocks</button>
         <button class="button--grey" @click="goToGitHub">GitHub</button>
       </div>
 
-      <div>Total Records {{ this.baseBlocks.length }}</div>
-      <div>{{ JSON.stringify(this.baseBlocks) }}</div>
+      <div>Total Blocks loaded: {{ this.baseBlocks.length }}</div>
     </div>
   </section>
 </template>
@@ -36,7 +35,7 @@ export default {
     }
   },
   methods: {
-    goToComponents() {
+    goToBlocks() {
       return this.$router.push('/components')
     },
     goToGitHub() {
