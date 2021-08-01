@@ -10,10 +10,10 @@
     </div>
     <h2>&nbsp;</h2>
     <div>
-      <div>Total Blocks loaded: {{ this.baseBlocks.length }}</div>
+      <div>Total Blocks loaded: {{ this.baseComponents.length }}</div>
       <vue-good-table
         :columns="columns"
-        :rows="baseBlocks"
+        :rows="baseComponents"
         :search-options="{ enabled: true }"
         :pagination-options="{
           enabled: true,
@@ -22,14 +22,6 @@
         }"
         styleClass="vgt-table striped"
         >
-        <!--template slot="table-column" slot-scope="props">
-           <span v-if="props.column.label === 'Components'">
-              <i class="fa fa-address-book">{{props.column.label}}</i>
-           </span>
-           <span v-else>
-              {{props.column.label}}
-           </span>
-        </template-->
         <div slot="emptystate">
           No data... please reload root of the website in order to have data!
         </div>
@@ -40,10 +32,10 @@
 
 <script>
 export default {
-  name: 'blocks',
+  name: 'components',
   computed: {
-    baseBlocks () {
-      return this.$store.state.base.blocks;
+    baseComponents () {
+      return this.$store.state.base.components;
     }
   },
   methods: {
@@ -55,44 +47,12 @@ export default {
     return {
       columns: [
         {
+          label: 'Code',
+          field: 'Code',
+        },
+        {
           label: 'DisplayName',
           field: 'DisplayName',
-        },
-        {
-          label: 'CubeSize',
-          field: 'CubeSize',
-        },
-        {
-          label: 'Type',
-          field: 'Id.TypeId',
-        },
-        {
-          label: 'Subtype',
-          field: 'Id.SubtypeId',
-        },
-        {
-          label: 'Description',
-          field: 'ParsedDescription',
-        },
-        {
-          label: 'PCU',
-          field: 'PCU',
-        },
-        {
-          label: 'BuildTimeSeconds',
-          field: 'BuildTimeSeconds',
-        },
-        {
-          label: 'RequiredPowerInput',
-          field: 'RequiredPowerInput',
-        },
-        {
-          label: 'Components',
-          field: 'ParsedComponents',
-        },
-        {
-          label: 'Components2',
-          field: 'Components',
         },
       ],
       rows: [],

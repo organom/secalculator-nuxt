@@ -9,11 +9,12 @@
       </h2>
       <div class="links">
         <button class="button--grey" @click="goToBlocks">Blocks</button>
+        <button class="button--grey" @click="goToComponents">Components</button>
         <button class="button--grey" @click="goToGitHub">GitHub</button>
       </div>
-
+      <h2>&nbsp;</h2>
       <div>Total Blocks loaded: {{ this.baseBlocks.length }}</div>
-
+      <div>Total Components loaded: {{ this.baseComponents.length }}</div>
     </div>
   </section>
 </template>
@@ -26,18 +27,51 @@ export default {
   async asyncData({ $http, store }) {
     // Base Blocks
     if(store.state.base.blocks.length === 0 ) {
-      store.commit('base/setBlocks', await sehelper.loadBaseBlocks());
+      const blocks = await sehelper.loadBaseBlocks();
+      const components = blocks.map(x => x.Components.Component).flat();
+      const uniqueComponents = [...new Set(components.map(t => t['@_Subtype']))];
+      store.commit('base/setComponents', uniqueComponents.map(t => {
+        return {
+          Code: t,
+          DisplayName: t.replace(/([A-Z])/g, " $1")
+        };
+      }));
+
+      for (let i = 0; i < blocks.length; i++) {
+        const comps = {};
+        if(Array.isArray(blocks[i].Components.Component)) {
+          for (let t = 0; t < blocks[i].Components.Component.length; t++) {
+            const key = blocks[i].Components.Component[t]['@_Subtype'];
+            const value = blocks[i].Components.Component[t]['@_Count'];
+            comps[key] = +(comps[key] || 0) + +value;
+          }
+        } else {
+          const key = blocks[i].Components.Component['@_Subtype'];
+          const value = blocks[i].Components.Component['@_Count'];
+          comps[key] = +value;
+        }
+        blocks[i].ParsedComponents = comps;
+        blocks[i].ParsedDescription = blocks[i].Description?.replace('Description_', '');
+      }
+      store.commit('base/setBlocks', blocks);
     }
+
     return {}
   },
   computed: {
     baseBlocks () {
       return this.$store.state.base.blocks;
+    },
+    baseComponents () {
+      return this.$store.state.base.components;
     }
   },
   methods: {
     goToBlocks() {
       return this.$router.push('/blocks')
+    },
+    goToComponents() {
+      return this.$router.push('/components')
     },
     goToGitHub() {
       return window.location = 'https://github.com/organom/secalculator';
