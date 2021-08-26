@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"\u002Fsecalculator\u002F_nuxt\u002Fstatic\u002F1629968508",layout:"default",error:a,state:{base:{blocks:[],components:[]}},serverRendered:true,routePath:"\u002Fcomponents",config:{_app:{basePath:"\u002Fsecalculator\u002F",assetsPath:"\u002Fsecalculator\u002F_nuxt\u002F",cdnURL:a},http:{browserBaseURL:"\u002F"}}}}(null));
