@@ -8,6 +8,7 @@
         Space Engineers calculator
       </h2>
       <div class="links">
+        <button class="button--grey" @click="goToBlueprint">Blueprint</button>
         <button class="button--grey" @click="goToBlocks">Blocks</button>
         <button class="button--grey" @click="goToComponents">Components</button>
         <button class="button--grey" @click="goToGitHub">GitHub</button>
@@ -67,6 +68,9 @@ export default {
     }
   },
   methods: {
+    goToBlueprint() {
+      return this.$router.push('/blueprint')
+    },
     goToBlocks() {
       return this.$router.push('/blocks')
     },
