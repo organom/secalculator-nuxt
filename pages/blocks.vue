@@ -91,7 +91,7 @@ export default {
           field: 'ParsedComponents',
         },
         {
-          label: 'Components2',
+          label: 'Components_original',
           field: 'Components',
         },
       ],

@@ -10,7 +10,7 @@
     </div>
     <h2>&nbsp;</h2>
     <div>
-      <div>Total Blocks loaded: {{ this.baseComponents.length }}</div>
+      <div>Total Components loaded: {{ this.baseComponents.length }}</div>
       <vue-good-table
         :columns="columns"
         :rows="baseComponents"
