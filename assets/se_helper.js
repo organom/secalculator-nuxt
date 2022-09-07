@@ -9,7 +9,7 @@ module.exports = {
 
     const blocks = [];
     for (let i = 0; i < files.length; i++){
-      const response = await fetch(`https://organom.github.io/secalculator/CubeBlocks/${files[i]}.sbc`,{mode: 'no-cors'})
+      const response = await fetch(`https://organom.github.io/secalculator_nuxt/CubeBlocks/${files[i]}.sbc`,{mode: 'no-cors'})
       const xml = await response.text();
       const jsonObj = await fastParser.parse(xml, {
         attributeNamePrefix: "@_",
