@@ -1,8 +1,10 @@
-# secalculator_nuxt (deprecated in favor of secalculator)
+# secalculator-nuxt (deprecated in favor of secalculator)
 [![CodeQL](https://github.com/organom/secalculator_nuxt/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/organom/secalculator_nuxt/actions/workflows/codeql-analysis.yml) [![GHPages](https://github.com/organom/secalculator_nuxt/actions/workflows/ghpages.yml/badge.svg)](https://github.com/organom/secalculator_nuxt/actions/workflows/ghpages.yml) 
 
 
-Space Engineers calculator  https://organom.github.io/secalculator_nuxt/
+***DEPRECATED:*** in favor of the react version https://organom.github.io/secalculator/
+
+Space Engineers calculator  https://organom.github.io/secalculator-nuxt/
 
 ## Build Setup
 
