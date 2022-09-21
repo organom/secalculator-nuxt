@@ -2,7 +2,7 @@
 [![CodeQL](https://github.com/organom/secalculator_nuxt/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/organom/secalculator_nuxt/actions/workflows/codeql-analysis.yml) [![GHPages](https://github.com/organom/secalculator_nuxt/actions/workflows/ghpages.yml/badge.svg)](https://github.com/organom/secalculator_nuxt/actions/workflows/ghpages.yml) 
 
 
-Space Engineers calculator  https://organom.github.io/secalculator/
+Space Engineers calculator  https://organom.github.io/secalculator_nuxt/
 
 ## Build Setup
 
