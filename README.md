@@ -1,4 +1,4 @@
-# secalculator_nuxt (deprecated in favor of secalculator - react version)
+# secalculator_nuxt (deprecated in favor of secalculator)
 [![CodeQL](https://github.com/organom/secalculator_nuxt/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/organom/secalculator_nuxt/actions/workflows/codeql-analysis.yml) [![GHPages](https://github.com/organom/secalculator_nuxt/actions/workflows/ghpages.yml/badge.svg)](https://github.com/organom/secalculator_nuxt/actions/workflows/ghpages.yml) 
 
 
