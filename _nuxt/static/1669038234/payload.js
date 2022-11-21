@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/", {data:[{}],fetch:{},mutations:[["base\u002FsetComponents",[]],["base\u002FsetBlocks",[]]]});
